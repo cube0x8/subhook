@@ -326,7 +326,7 @@ SUBHOOK_EXPORT int SUBHOOK_API subhook_disasm(void *src, int *reloc_op_offset) {
   return len;
 }
 
-static size_t subhook_get_jmp_size(subhook_flags_t flags) {
+size_t subhook_get_jmp_size(subhook_flags_t flags) {
 #ifdef SUBHOOK_X86_64
   if ((flags & SUBHOOK_64BIT_OFFSET) != 0) {
     return sizeof(struct subhook_jmp64);

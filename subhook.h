@@ -101,6 +101,8 @@ typedef int (SUBHOOK_API *subhook_disasm_handler_t)(
   void *src,
   int *reloc_op_offset);
 
+size_t subhook_get_jmp_size(subhook_flags_t flags);
+
 SUBHOOK_EXPORT subhook_t SUBHOOK_API subhook_new(
   void *src,
   void *dst,
