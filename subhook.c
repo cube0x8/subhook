@@ -50,6 +50,13 @@ SUBHOOK_EXPORT void *SUBHOOK_API subhook_get_trampoline(subhook_t hook) {
   return hook->trampoline;
 }
 
+SUBHOOK_EXPORT size_t SUBHOOK_API subhook_get_trampoline_size(subhook_t hook) {
+    if (hook == NULL) {
+        return 0;
+    }
+    return hook->trampoline_size;
+}
+
 SUBHOOK_EXPORT int SUBHOOK_API subhook_is_installed(subhook_t hook) {
   if (hook == NULL) {
     return false;

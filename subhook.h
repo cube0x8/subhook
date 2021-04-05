@@ -102,6 +102,7 @@ typedef int (SUBHOOK_API *subhook_disasm_handler_t)(
   int *reloc_op_offset);
 
 size_t subhook_get_jmp_size(subhook_flags_t flags);
+SUBHOOK_EXPORT size_t SUBHOOK_API subhook_get_trampoline_size(subhook_t hook);
 
 SUBHOOK_EXPORT subhook_t SUBHOOK_API subhook_new(
   void *src,

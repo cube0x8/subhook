@@ -71,3 +71,7 @@ _deps
 # Makefiles (geerated by CMake)
 Makefile
 *.make
+
+# CLion
+.idea
+cmake-*
