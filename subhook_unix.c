@@ -31,12 +31,18 @@
 #define SUBHOOK_CODE_PROTECT_FLAGS (PROT_READ | PROT_WRITE | PROT_EXEC)
 
 int subhook_unprotect(void *address, size_t size) {
-  long pagesize;
+    long pagesize;
+    void *page_address;
 
-  pagesize = sysconf(_SC_PAGESIZE);
-  address = (void *)((long)address & ~(pagesize - 1));
+    pagesize = sysconf(_SC_PAGESIZE);
+    page_address = (void *)((long)address & ~(pagesize - 1));
 
-  return mprotect(address, size, SUBHOOK_CODE_PROTECT_FLAGS);
+    if (page_address + pagesize < address + size)
+    {
+        size = pagesize + size;
+    }
+
+    return mprotect(page_address, size, SUBHOOK_CODE_PROTECT_FLAGS);
 }
 
 void *subhook_alloc_code(size_t size) {
